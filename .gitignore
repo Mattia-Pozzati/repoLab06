@@ -1,4 +1,4 @@
 ./*/build/
 *.class
-./*/gradle/
-./*/gradlew
+/*/gradle
+/*/gradlew

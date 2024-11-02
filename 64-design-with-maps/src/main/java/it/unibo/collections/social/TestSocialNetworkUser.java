@@ -48,11 +48,11 @@ public final class TestSocialNetworkUser {
          * 
          * * Adam Smith, asmith, (no age)
          */
-        final SocialNetworkUser<User> kbacon = null; //TODO
-        final SocialNetworkUser<User> dwashington = null; //TODO
-        final SocialNetworkUser<User> mgladwell = null; //TODO
-        final SocialNetworkUser<User> ntaleb = null; //TODO
-        final User asmith = null; //TODO
+        final SocialNetworkUser<User> kbacon = new SocialNetworkUserImpl<>("Kevin", "Bacon", "kbacon", 56);
+        final SocialNetworkUser<User> dwashington = new SocialNetworkUserImpl<>("Denzel", "Washington", "dwashington", 59);
+        final SocialNetworkUser<User> mgladwell = new SocialNetworkUserImpl<>("Malcom", "Gladwell", "mgladwell", 51);
+        final SocialNetworkUser<User> ntaleb = new SocialNetworkUserImpl<>("Nicholas", "Taleb", "ntaleb", 54);
+        final User asmith = new UserImpl("Adam", "Smith", "asmith");
         /*
          * Make people follow each other
          */
@@ -70,11 +70,14 @@ public final class TestSocialNetworkUser {
         final Collection<User> mgladFriends = mgladwell.getFollowedUsersInGroup("Close friends");
         assertTrue("M Gladwell has not set yet any group called \"Close friends\"", mgladFriends.isEmpty());
         final Collection<User> dwashFriends = dwashington.getFollowedUsersInGroup(WRITERS);
+        
         assertTrue("Denzel has 2 followed people in group \"" + WRITERS + "\"",  dwashFriends.size() == 2);
         /*
          * Adding another friend to Denzel's "writers" group
          */
+        System.out.println(dwashington.getFollowedUsersInGroup(WRITERS));
         dwashFriends.add(asmith);
+        System.out.println(dwashington.getFollowedUsersInGroup(WRITERS));
         /*
          * The above operation *MUST* have no effect on Denzel's profile itself:
          * STILL TWO PEOPLE in denzel's group called writers
